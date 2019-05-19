@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 
-export class PieCountDown {
+export class CountDown {
 
   public readonly MILLISECOND = 1;
   public readonly SECOND = 1000 * this.MILLISECOND;

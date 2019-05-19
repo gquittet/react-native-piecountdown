@@ -1,1 +1,1 @@
-export { ClockPie } from './PieCountDown'
+export { PieCountDown } from './PieCountDown'

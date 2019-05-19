@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { EventEmitter } from "events";
 import { Timer } from "./Timer";
 import { CircularPieChart } from "./CircularPieChart";
-import { PieCountDown } from "./CountDown";
+import { CountDown } from "./CountDown";
 
 export interface Props {
   time: number;
@@ -14,15 +14,15 @@ interface State {
   label: string;
 }
 
-export class ClockPie extends React.Component<Props, State> {
+export class PieCountDown extends React.Component<Props, State> {
 
   private _emitter: EventEmitter;
-  private clock: PieCountDown;
+  private clock: CountDown;
 
   constructor(props: Props) {
     super(props);
     this._emitter = new EventEmitter();
-    this.clock = new PieCountDown(props.time, this._emitter);
+    this.clock = new CountDown(props.time, this._emitter);
     this.clock.start();
     this.state = { time: props.time, label: this.clock.toString() }
   }
