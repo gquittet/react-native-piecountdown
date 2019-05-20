@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Animated, InteractionManager } from "react-native";
 
 export interface Props {
   time: string;

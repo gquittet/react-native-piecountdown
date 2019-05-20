@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Animated, Easing } from "react-native";
 import { Svg } from "expo";
 
 export interface Props {
@@ -11,6 +11,7 @@ export interface Props {
 interface State {
   now: number;
   pending: number;
+  animatedValue: Animated.Value;
 }
 
 const { Circle } = Svg;
@@ -26,8 +27,17 @@ export class CircularPieChart extends React.Component<Props, State> {
 
     this.state = {
       now: map(current, min, max, 0, 100),
-      pending: map(max - current, min , max, 0, 100)
+      pending: map(max - current, min, max, 0, 100),
+      animatedValue: new Animated.Value(map(current, min, max, 0, 100))
     };
+
+    this.state.animatedValue.addListener(({ value }) => {
+      this.setState({
+        ...this.state,
+        now: value,
+        pending: 100 - value
+      })
+    })
   }
 
   componentWillReceiveProps(props: Props): void {
@@ -35,15 +45,21 @@ export class CircularPieChart extends React.Component<Props, State> {
     const min = props.min || 0;
     const max = props.max;
 
-    this.setState({
-      now: map(current, min, max, 0, 100),
-      pending: map(max - current, min , max, 0, 100)
-    });
+    const value = map(current, min, max, 0, 100) > 0 ?
+      map(current, min, max, 0, 100) : 0;
+
+    Animated.timing(this.state.animatedValue, {
+      toValue: value,
+      duration: 1000,
+      easing: Easing.linear,
+      delay: 0,
+      useNativeDriver: true
+    }).start();
   }
 
   render(): JSX.Element {
     return (
-      <View style={styles.container}>
+      <Animated.View style={styles.container}>
         <Svg height="330" width="330" viewBox="0 0 50 50">
           <Circle
             cx="50%"
@@ -68,7 +84,7 @@ export class CircularPieChart extends React.Component<Props, State> {
             strokeDashoffset="25"
           />
         </Svg>
-      </View>
+      </Animated.View>
     );
   }
 }

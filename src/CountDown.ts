@@ -49,10 +49,18 @@ export class CountDown {
   set time(value: number) {
     if (!this.isFinished()) {
       this._time = value;
+      if (this.isFinished()) {
+        this.finished();
+      }
     } else {
-      this.stop();
-      this.reset();
+      this.finished();
     }
+  }
+
+  private finished() {
+    this.stop();
+    this.reset();
+    this._emitter.emit('onPieCountDownFinished');
   }
 
   get time(): number {

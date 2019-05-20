@@ -29,8 +29,7 @@ export class PieCountDown extends React.Component<Props, State> {
 
   componentDidMount() {
     this._emitter.addListener('onPieCountDownUpdate', ({ time, toString }) => {
-      this.updateTime(time);
-      this.setState({ ...this.state, label: toString });
+      this.updateTime(time, toString);
     });
   }
 
@@ -39,9 +38,9 @@ export class PieCountDown extends React.Component<Props, State> {
     this.clock.reset();
   }
 
-  updateTime(time: number): void {
+  updateTime(time: number, toString: string): void {
     const timeInSecond = Math.round(time / (1 * this.clock.SECOND));
-    this.setState({ ...this.state, time: timeInSecond });
+    this.setState({ ...this.state, time: timeInSecond, label: toString });
   }
 
   render(): JSX.Element {
@@ -49,8 +48,8 @@ export class PieCountDown extends React.Component<Props, State> {
       <View style={styles.container}>
         <CircularPieChart
           min={0}
-          max={this.props.time}
-          current={this.state.time}
+          max={this.props.time - 1}
+          current={this.state.time - 1}
         />
         <Timer time={this.state.label}></Timer>
       </View>

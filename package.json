@@ -1,6 +1,6 @@
 {
   "name": "react-native-piecountdown",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A pie count down component for React Native",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,8 +8,28 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "pie",
+    "countdown",
+    "count",
+    "down",
+    "react",
+    "native",
+    "react-native",
+    "plugin",
+    "component"
+  ],
   "author": "Guillaume Quittet",
   "license": "MIT",
+  "homepage": "https://github.com/gquittet/react-native-piecountdown#readme",
+  "bugs": {
+    "url" : "https://github.com/gquittet/react-native-piecountdown/issues",
+    "email" : "project@hostname.com"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "git@github.com:gquittet/react-native-piecountdown.git"
+  },
   "peerDependencies": {
     "expo": "^32.0.0",
     "react": "16.5.0",
