@@ -56,11 +56,9 @@ Return nothing.
 
 ## Todo
 
-[x] Add animations to the circle
-
-[ ] Allow color change
-
-[ ]
+- [x] Add animations to the circle
+- [ ] Allow color configuration
+- [ ] Allow more tweaks
 
 ## Author
 
