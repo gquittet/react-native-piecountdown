@@ -1,6 +1,6 @@
 {
   "name": "react-native-piecountdown",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A pie count down component for React Native",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,6 +30,12 @@
     "type" : "git",
     "url" : "git@github.com:gquittet/react-native-piecountdown.git"
   },
+  "engines": {
+    "node": ">=8"
+  },
+  "files": [
+    "dist/*"
+  ],
   "peerDependencies": {
     "expo": "^32.0.0",
     "react": "16.5.0",
